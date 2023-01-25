@@ -1,5 +1,6 @@
 import requests
 import selectorlib
+from send_email import send_email
 
 
 URL = "http://programmer100.pythonanywhere.com/tours/"
@@ -24,10 +25,6 @@ def extract(source):
     return value
 
 
-def send_email():
-    print("Hola mundo")
-
-
 def store(extracted_local):
 
     with open("data.txt", "a") as file:
@@ -48,4 +45,4 @@ if __name__ == "__main__":
     if extracted != "No upcoming tours":
         if extracted not in content:
             store(extracted)
-            send_email()
+            send_email(message="Hey, new event was found")
